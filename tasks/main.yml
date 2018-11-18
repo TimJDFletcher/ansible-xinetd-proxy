@@ -1,11 +1,10 @@
 ---
 - name: Include Debian specific tasks
-  include: Debian.yml
+  include_playbook: Debian.yml
   when: ansible_os_family == 'Debian'
-  static: no
-  
+
 - name: Include Red Hat specific tasks
-  include: RedHat.yml
+  include_playbook: RedHat.yml
   when: ansible_os_family == 'RedHat'
   static: no
 
@@ -26,7 +25,7 @@
     - discard
     - echo
     - time
-    
+
 - name: Copy over service files
   become: true
   template:
@@ -38,7 +37,7 @@
   with_items:
     - "{{ xinetd_proxy_services }}"
   notify: xinetd restart
-  
+
 - name: Enable xinetd service
   become: true
   service:

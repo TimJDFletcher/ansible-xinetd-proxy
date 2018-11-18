@@ -1,12 +1,11 @@
 ---
 - name: Include Debian specific tasks
-  include_playbook: Debian.yml
+  include_tasks: Debian.yml
   when: ansible_os_family == 'Debian'
 
 - name: Include Red Hat specific tasks
-  include_playbook: RedHat.yml
+  include_tasks: RedHat.yml
   when: ansible_os_family == 'RedHat'
-  static: no
 
 - name: Check for unsupported target operating system
   fail:

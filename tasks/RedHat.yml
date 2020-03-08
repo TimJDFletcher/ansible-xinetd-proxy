@@ -6,4 +6,4 @@
 - name: RedHat | install packages
   yum:
     pkg: xinetd
-    state: installed
+    state: present
